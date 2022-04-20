@@ -1,12 +1,10 @@
-console.log("Hello from menu");
 class Menu extends Phaser.Scene {
     constructor() {
         super("menu");
     }
     preload() {
-        this.load.audio('sfx_select', './assets/blip_select12.wav');
-        this.load.audio('sfx_explosion', './assets/explosion38.wav');
-        this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.audio('bubblespop', './assets/bubblespop.mp3');
+        this.load.image('menubackground', './assets/menubackground.png');
     }
     create(){
         let menuConfig = {
@@ -22,7 +20,7 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
         this.bg = this.add.tileSprite(0,0, game.config.width, game.config.height, 'menubackground').setOrigin(0, 0);
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'BUBBLE POP!', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2, 'Use ←→ arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
         
@@ -36,7 +34,7 @@ class Menu extends Phaser.Scene {
               spaceshipSpeed: 3,
               gameTimer: 60000    
             }
-            this.sound.play('sfx_select');
+            this.sound.play('bubblespop');
             this.scene.start('play');    
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
@@ -45,7 +43,7 @@ class Menu extends Phaser.Scene {
                 spaceshipSpeed: 4,
                 gameTimer: 45000    
             }
-            this.sound.play('sfx_select');
+            this.sound.play('bubblespop');
             this.scene.start('play');    
         }
     }
